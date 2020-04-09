@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+
+        <record model="ir.actions.act_window" id="anggota_action">
+            <field name="name">Profile</field>
+            <field name="res_model">anggota</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('email_odoo','=', uid)]</field>
+        </record>
+
+        <record id="anggota_tree_view" model="ir.ui.view">
+            <field name="name">Profile tree</field>
+            <field name="model">anggota</field>
+            <field name="arch" type="xml">
+                <tree string="Profile">
+                    <field name="name"/>
+                    <field name="full_name"/>
+                    <field name="email_odoo"/>
+                    <field name="email"/>
+                    <field name="address"/>
+                    <field name="job_function"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="anggota_form" model="ir.ui.view">
+            <field name="name">Profile Form</field>
+            <field name="model">anggota</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field readonly="1" name='name' />
+                                <field name="photo" widget="image"/>
+                                <field name='full_name' />
+                                <field name="email_odoo" readonly="1" />
+                                <field name='email' />
+                                <field name='address' />
+                                <field name='phone' />
+                                <field name='skill' />
+                                <field name='job_function' />
+                                <field name='ongoing_job' />
+                            </group>
+                            <group>
+                                <field name='income' />
+                                <field name='payment_method' />
+                                <field name='international_client' />
+                                <field name='url_link_profile' />
+                                <field name='willing_to_share' />
+                                <field name='comments' />
+                                <field name='desirable_seminar' />
+                            </group>
+                        </group>
+                        
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="sequence_self_service" model="ir.sequence">
+            <field name="name">Self Service</field>
+            <field name="code">self.service</field>
+            <field name="active">TRUE</field>
+            <field name="prefix">SS</field>
+            <field name="padding">6</field>
+            <field name="number_next">1</field>
+            <field name="number_increment">1</field>
+        </record>
+
+
+
+
+
+        <menuitem 
+            id="menu_anggota_id" 
+            name="Profile" 
+            action="anggota_action" 
+        />
+    </data>
+</odoo>
